@@ -13,8 +13,8 @@
 -- $Id: coxpcall.lua,v 1.13 2008/05/19 19:20:02 mascarenhas Exp $
 -------------------------------------------------------------------------------
 
--- Lua 5.2 makes this module a no-op
-if _VERSION ~= "Lua 5.1" then
+-- Lua 5.2+ and LuaJIT make this module a no-op
+if _VERSION ~= "Lua 5.1" or jit then
   copcall = pcall
   coxpcall = xpcall
   return { pcall = pcall, xpcall = xpcall, running = coroutine.running }
